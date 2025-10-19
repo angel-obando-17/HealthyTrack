@@ -177,6 +177,13 @@ void Sistema::verProgresoUsuario( string nombre_usuario ) {
     return;
 }
 
+void Sistema::mostrarInfoUsuarios( ) {
+    cout << "======== RESUMEN DE TODOS LOS USUARIOS REGISTRADOS ========" << endl;
+    for( int i = 0; i < this -> usuarios.size( ); i++ ) {
+        this -> usuarios[ i ] -> mostrar_resumen( this );
+    }
+}
+
 float Sistema::cumplimiento( Usuario* usuario, int index ) {
     float cumplimiento = 0;
     Habito* habito = usuario -> get_habito( index );

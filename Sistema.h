@@ -26,6 +26,7 @@ class Sistema {
         void registrarProgresoUsuario( string nombre_usuario );
         void verInfoUsuario( string nombre_usuario );
         void verProgresoUsuario( string nombre_usuario );
+        void mostrarInfoUsuarios( );
         float cumplimiento( Usuario* usuario, int index );
         float promedioEnergia( Usuario* usuario, int index );
         float indiceBase( Usuario* usuario, int index );
