@@ -35,6 +35,7 @@ void Sistema::InicializarDatos( ) {
     string frase0_categoria2 = "Respira profundo, todo toma su tiempo.";
     string frase1_categoria2 = "Tu paz mental vale más que la prisa.";
     string frase2_categoria2 = "Reconoce tus emociones y trátate con amabilidad.";
+    this -> frases.resize( 3 );
     this -> frases[ 0 ].push_back( frase0_categoria0 );
     this -> frases[ 0 ].push_back( frase1_categoria0 );
     this -> frases[ 0 ].push_back( frase2_categoria0 );
@@ -64,6 +65,7 @@ Usuario* Sistema::crearUsuario( ) {
 void Sistema::registrarUsuario( ) {
     Usuario* usuario = this -> crearUsuario( );
     this -> usuarios.push_back( usuario );
+    cout << "Usuario Registrado con Exito!" << endl;
 }
 
 Usuario* Sistema::buscarUsuario( string nombre_usuario ) {
@@ -92,37 +94,44 @@ void Sistema::registrarHabitoUsuario( string nombre_usuario ) {
         }
         cout << "Ingrese la opcion escogida: " << endl;
         int opc;
+        cin >> opc;
         switch( opc ) {
-            case 1:
-                cout << "Usted escogio la opcion: " << this -> categorias[ opc ] << "." << endl;
+            case 1: {
+                cout << "Usted escogio la opcion: " << this -> categorias[ opc - 1 ] << "." << endl;
                 Categoria* categoria = new Categoria( );
-                categoria -> set_nombre( this -> categorias[ opc ] );
-                categoria -> set_frases( this -> frases[ opc ] );
-                categoria -> set_factor( this -> factores[ opc ] );
-                categoria -> set_meta( this -> metas[ opc ] );
+                categoria -> set_nombre( this -> categorias[ opc - 1 ] );
+                categoria -> set_frases( this -> frases[ opc - 1 ] );
+                categoria -> set_factor( this -> factores[ opc - 1 ] );
+                categoria -> set_meta( this -> metas[ opc - 1 ] );
                 Habito* habito = new Habito( nombre_habito, categoria );
                 usuario -> registrar_habito( habito );
                 cout << "Habito registrado con exito!" << endl;
-            case 2: 
-                cout << "Usted escogio la opcion: " << this -> categorias[ opc ] << "." << endl;
+                break;
+            }
+            case 2: { 
+                cout << "Usted escogio la opcion: " << this -> categorias[ opc - 1 ] << "." << endl;
                 Categoria* categoria = new Categoria( );
-                categoria -> set_nombre( this -> categorias[ opc ] );
-                categoria -> set_frases( this -> frases[ opc ] );
-                categoria -> set_factor( this -> factores[ opc ] );
-                categoria -> set_meta( this -> metas[ opc ] );
+                categoria -> set_nombre( this -> categorias[ opc - 1 ] );
+                categoria -> set_frases( this -> frases[ opc - 1 ] );
+                categoria -> set_factor( this -> factores[ opc - 1 ] );
+                categoria -> set_meta( this -> metas[ opc - 1 ] );
                 Habito* habito = new Habito( nombre_habito, categoria );
                 usuario -> registrar_habito( habito );
                 cout << "Habito registrado con exito!" << endl;
-            case 3:
-                cout << "Usted escogio la opcion: " << this -> categorias[ opc ] << "." << endl;
+                break;
+            }
+            case 3: {
+                cout << "Usted escogio la opcion: " << this -> categorias[ opc - 1 ] << "." << endl;
                 Categoria* categoria = new Categoria( );
-                categoria -> set_nombre( this -> categorias[ opc ] );
-                categoria -> set_frases( this -> frases[ opc ] );
-                categoria -> set_factor( this -> factores[ opc ] );
-                categoria -> set_meta( this -> metas[ opc ] );
+                categoria -> set_nombre( this -> categorias[ opc - 1 ] );
+                categoria -> set_frases( this -> frases[ opc - 1 ] );
+                categoria -> set_factor( this -> factores[ opc - 1 ] );
+                categoria -> set_meta( this -> metas[ opc - 1 ] );
                 Habito* habito = new Habito( nombre_habito, categoria );
                 usuario -> registrar_habito( habito );
                 cout << "Habito registrado con exito!" << endl;
+                break;
+            }
             default:
                 break;
         }

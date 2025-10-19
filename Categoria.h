@@ -14,7 +14,7 @@ class Categoria {
         float           factor;
         float           meta;
     public:
-        Categoria( );
+        Categoria( ) = default;
         void            set_nombre( string nombre );
         void            set_frases( vector<string> frases );
         void            set_factor( float factor );

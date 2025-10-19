@@ -1,5 +1,5 @@
 #ifndef USUARIO_H
-#define USUARIO_h
+#define USUARIO_H
 
 #include <string>
 #include <vector>
@@ -15,7 +15,7 @@ class Usuario {
         string          nombre;
         vector<Habito*> habitos;
     public:
-        Usuario( );
+        Usuario( ) = default;
         Usuario( string nombre );
         string          get_nombre( );
         Habito*         get_habito( int index );

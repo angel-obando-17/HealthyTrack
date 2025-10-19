@@ -16,7 +16,7 @@ class Habito {
         vector<bool>    cumplimiento;
         vector<int>     nivelEnergia;
     public:
-        Habito( );
+        Habito( ) = default;
         Habito( string nombre, Categoria* categoria );
         string          get_nombre( );
         Categoria*      get_categoria( );
