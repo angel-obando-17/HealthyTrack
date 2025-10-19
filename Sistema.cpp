@@ -66,7 +66,7 @@ void Sistema::registrarUsuario( ) {
     this -> usuarios.push_back( usuario );
 }
 
-void Sistema::registrarHabitoUsuario( string nombre_usuario ) {
+Usuario* Sistema::buscarUsuario( string nombre_usuario ) {
     bool found = false;
     Usuario* usuario = nullptr;
     for( int i = 0; i < this -> usuarios.size( ) && !found; i++ ) {
@@ -76,7 +76,12 @@ void Sistema::registrarHabitoUsuario( string nombre_usuario ) {
         }
     }
 
-    if( found ) {
+    return usuario;
+}
+
+void Sistema::registrarHabitoUsuario( string nombre_usuario ) {
+    Usuario* usuario = this -> buscarUsuario( nombre_usuario );
+    if( usuario != nullptr ) {
         cout << "Ingrese el nombre del habito que desea registrar: " << endl;
         string nombre_habito;
         cin >> nombre_habito;
@@ -99,28 +104,48 @@ void Sistema::registrarHabitoUsuario( string nombre_usuario ) {
                 usuario -> registrar_habito( habito );
                 cout << "Habito registrado con exito!" << endl;
             case 2: 
-
+                cout << "Usted escogio la opcion: " << this -> categorias[ opc ] << "." << endl;
+                Categoria* categoria = new Categoria( );
+                categoria -> set_nombre( this -> categorias[ opc ] );
+                categoria -> set_frases( this -> frases[ opc ] );
+                categoria -> set_factor( this -> factores[ opc ] );
+                categoria -> set_meta( this -> metas[ opc ] );
+                Habito* habito = new Habito( nombre_habito, categoria );
+                usuario -> registrar_habito( habito );
+                cout << "Habito registrado con exito!" << endl;
             case 3:
-            
+                cout << "Usted escogio la opcion: " << this -> categorias[ opc ] << "." << endl;
+                Categoria* categoria = new Categoria( );
+                categoria -> set_nombre( this -> categorias[ opc ] );
+                categoria -> set_frases( this -> frases[ opc ] );
+                categoria -> set_factor( this -> factores[ opc ] );
+                categoria -> set_meta( this -> metas[ opc ] );
+                Habito* habito = new Habito( nombre_habito, categoria );
+                usuario -> registrar_habito( habito );
+                cout << "Habito registrado con exito!" << endl;
             default:
                 break;
         }
     } else {
-        cout << "El usuario ingresado no esta registrado." << endl;
+        cout << "El usuario no esta registrado." << endl;
+    }
+}
+
+void Sistema::registrarProgresoUsuario( string nombre_usuario ) {
+    Usuario* usuario = this -> buscarUsuario( nombre_usuario );
+    if( usuario != nullptr ) {
+        string nombre_habito;
+        cout << "Ingrese el nombre del Habito: " << endl;
+        cin >> nombre_habito;
+        usuario -> registrar_progreso( nombre_habito );
+    } else {
+        cout << "El usuario no esta registrado." << endl;
     }
 }
 
 void Sistema::verInfoUsuario( string nombre_usuario ) {
-    bool found = false;
-    Usuario* usuario = nullptr;
-    for( int i = 0; i < this -> usuarios.size( ) && !found; i++ ) {
-        if( this -> usuarios[ i ] -> get_nombre( ) == nombre_usuario ) {
-            found = true;
-            usuario = this -> usuarios[ i ];
-        }
-    }
-
-    if( found ) {
+    Usuario* usuario = this -> buscarUsuario( nombre_usuario );
+    if( usuario != nullptr ) {
         usuario -> mostrar_resumen( this );
     } else {
         cout << "El usuario ingresado no esta registrado." << endl;
@@ -129,17 +154,12 @@ void Sistema::verInfoUsuario( string nombre_usuario ) {
     return;
 }
 
-void Sistema::verProgresoUsuario( string nombre_usuario, string nombre_habito ) {
-    bool found = false;
-    Usuario* usuario = nullptr;
-    for( int i = 0; i < this -> usuarios.size( ) && !found; i++ ) {
-        if( this -> usuarios[ i ] -> get_nombre( ) == nombre_usuario ) {
-            found = true;
-            usuario = this -> usuarios[ i ];
-        }
-    }
-
-    if( found ) {
+void Sistema::verProgresoUsuario( string nombre_usuario ) {
+    Usuario* usuario = this -> buscarUsuario( nombre_usuario );
+    if( usuario != nullptr ) {
+        string nombre_habito;
+        cout << "Ingrese el nombre del Habito." << endl;
+        cin >> nombre_habito;
         usuario -> mostrar_progreso( nombre_habito );
     } else {
         cout << "El usuario ingresado no esta registrado." << endl;

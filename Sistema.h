@@ -21,9 +21,11 @@ class Sistema {
         void InicializarDatos( );
         Usuario* crearUsuario( );
         void registrarUsuario( );
+        Usuario* buscarUsuario( string nombre_usuario );
         void registrarHabitoUsuario( string nombre_usuario );
+        void registrarProgresoUsuario( string nombre_usuario );
         void verInfoUsuario( string nombre_usuario );
-        void verProgresoUsuario( string nombre_usuario, string nombre_habito );
+        void verProgresoUsuario( string nombre_usuario );
         float cumplimiento( Usuario* usuario, int index );
         float promedioEnergia( Usuario* usuario, int index );
         float indiceBase( Usuario* usuario, int index );
