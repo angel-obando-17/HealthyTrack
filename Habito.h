@@ -20,6 +20,9 @@ class Habito {
         Habito( string nombre, Categoria* categoria );
         string          get_nombre( );
         Categoria*      get_categoria( );
+        void            set_fecha( string fecha );
+        void            set_cumplimiento( bool cumplimiento );
+        void            set_nivelEnergia( int nivelEnergia );
         vector<string>  get_fechas( );
         vector<bool>    get_cumplimiento( );
         vector<int>     get_nivelEnergia( );

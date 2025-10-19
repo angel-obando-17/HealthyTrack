@@ -8,6 +8,8 @@
 using std::string;
 using std::vector;
 
+class Sistema;
+
 class Usuario {
     private:
         string          nombre;
@@ -15,11 +17,12 @@ class Usuario {
     public:
         Usuario( );
         Usuario( string nombre );
-        string  get_nombre( );
-        Habito* get_habito( int index );
-        void    mostrar_resumen( );
-        void    registrar_progreso( );
-        void    mostrar_progreso( int index );
+        string          get_nombre( );
+        Habito*         get_habito( int index );
+        void            registrar_habito( Habito* habito );
+        void            mostrar_resumen( Sistema* sistema );
+        void            registrar_progreso( string nombre_habito );
+        void            mostrar_progreso( string nombre_habito );
         virtual ~Usuario( );
 };
 

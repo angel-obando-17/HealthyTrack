@@ -13,17 +13,21 @@ class Sistema {
     private:
         vector<string>           categorias;
         vector< vector<string> > frases;
-        vector<string>           habitos;
         vector<Usuario*>         usuarios;
+        vector<int>              metas;
+        vector<float>            factores;
     public:
-        Sistema( );
+        Sistema( ) = default;
+        void InicializarDatos( );
+        Usuario* crearUsuario( );
         void registrarUsuario( );
-        void verInfoUsuario( );
-        float cumplimiento( Usuario* usuario );
-        float promedioEnergia( Usuario* usuario );
-        float indiceBase( Usuario* usuario );
-        float indiceFinal( Usuario* usuario );
-        Categoria* set_categoria( );
+        void registrarHabitoUsuario( string nombre_usuario );
+        void verInfoUsuario( string nombre_usuario );
+        void verProgresoUsuario( string nombre_usuario, string nombre_habito );
+        float cumplimiento( Usuario* usuario, int index );
+        float promedioEnergia( Usuario* usuario, int index );
+        float indiceBase( Usuario* usuario, int index );
+        float indiceFinal( Usuario* usuario, int index );
         virtual ~Sistema( );
 };
 
