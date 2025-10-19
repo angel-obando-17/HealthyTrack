@@ -36,3 +36,7 @@ vector<bool> Habito::get_cumplimiento( ) {
 vector<int> Habito::get_nivelEnergia( ) {
     return this -> nivelEnergia;
 }
+
+Habito::~Habito( ) {
+    delete this -> categoria;
+}

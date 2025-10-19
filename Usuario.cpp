@@ -108,3 +108,9 @@ void Usuario::mostrar_progreso( string nombre_habito ) {
 
     return;
 }
+
+Usuario::~Usuario( ) {
+    for( int i = 0; i < this -> habitos.size( ); i++ ) {
+        delete this -> habitos[ i ];
+    }
+}

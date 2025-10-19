@@ -190,3 +190,9 @@ float Sistema::indiceFinal( Usuario* usuario, int index ) {
 
     return indiceFinal;
 }
+
+Sistema::~Sistema( ) {
+    for( int i = 0; i < this -> usuarios.size( ); i++ ) {
+        delete this -> usuarios[ i ];
+    }
+}
